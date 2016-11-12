@@ -1,0 +1,13 @@
+version: '2'
+services:
+
+  client:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: todorus/openkaart-client:production
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - ../client/app:/client/app
