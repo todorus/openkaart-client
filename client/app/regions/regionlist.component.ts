@@ -23,4 +23,8 @@ export class RegionListComponent implements OnInit {
                      error =>  {}
                    );
   }
+
+  select(region:Region){
+      console.log("selected", region);
+  }
 }

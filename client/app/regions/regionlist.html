@@ -1,6 +1,2 @@
 <input/>
-<ul>
-  <li *ngFor="let region of regions">
-    {{ region.name }}
-  </li>
-</ul>
+<labellist [data]="regions" (selected)="select($event)"></labellist>

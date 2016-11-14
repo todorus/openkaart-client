@@ -7,7 +7,9 @@ import { LabelListComponent }       from './general/labellist.component';
 import { RegionListComponent }      from './regions/regionlist.component';
 import { RegionService }            from './regions/region.service';
 
-import 'rxjs/Rx';
+// import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule ],
