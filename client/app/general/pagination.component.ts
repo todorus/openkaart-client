@@ -50,7 +50,6 @@ export class PaginationComponent {
         this.items = Pagination.toItems(value);
       }
     }
-    // pages:Pagination = null;
 
     @Output("page")
     page:EventEmitter<number> = new EventEmitter();

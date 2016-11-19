@@ -13,12 +13,15 @@ export class RegionService {
 
   constructor(private http: Http) { }
 
-  index(query:string):Observable<RegionResponse> {
+  index(query:string, page:number):Observable<RegionResponse> {
     //stub
     console.log("RegionService.index()");
     var params = new URLSearchParams();
     if(query != null){
       params.set("q", query);
+    }
+    if(page != null){
+      params.set("page", page);
     }
 
     return this.http.get(this.REGIONS_URL, { search: params })

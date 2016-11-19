@@ -20,6 +20,13 @@ export class LabelListComponent implements OnInit {
   constructor() {}
   ngOnInit() {}
 
+  @Output("page")
+  page:EventEmitter<number> = new EventEmitter();
+
+  onPage(page:number):void {
+      this.page.next(page);
+  }
+
   private select(entry:any) {
       this.selected.next(entry);
   }

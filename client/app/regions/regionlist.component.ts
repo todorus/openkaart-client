@@ -10,6 +10,7 @@ import { Pagination } from '../general/pagination';
 })
 export class RegionListComponent implements OnInit {
 
+  private _query:string = null;
   private timeoutId :any;
   private regions :Array<Region>;
   private pages :Pagination;
@@ -44,7 +45,8 @@ export class RegionListComponent implements OnInit {
     clearTimeout(this.timeoutId);
 
     this.timeoutId = setTimeout(() => {
-      this.search(event.target.value);
+      this._query = event.target.value;
+      this.search(this._query, null);
       this.timeoutId = null;
     }, 200);
   }
@@ -53,8 +55,8 @@ export class RegionListComponent implements OnInit {
     this.search(null);
   }
 
-  search(query:string) {
-    this.regionService.index(query)
+  search(query:string, page:number) {
+    this.regionService.index(query, page)
                   .subscribe(
                      regionData => {
                        this.regions = regionData.data;
@@ -62,6 +64,10 @@ export class RegionListComponent implements OnInit {
                      },
                      error =>  {}
                    );
+  }
+
+  onPage(page:number){
+    this.search(this._query, page);
   }
 
   select(region:Region){
