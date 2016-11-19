@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 
 import { Observable }     from 'rxjs/Observable';
 
@@ -13,10 +13,15 @@ export class RegionService {
 
   constructor(private http: Http) { }
 
-  index():Observable<RegionResponse> {
+  index(query:string):Observable<RegionResponse> {
     //stub
     console.log("RegionService.index()");
-    return this.http.get(this.REGIONS_URL)
+    var params = new URLSearchParams();
+    if(query != null){
+      params.set("q", query);
+    }
+
+    return this.http.get(this.REGIONS_URL, { search: params })
                .map(response => <RegionResponse> response.json())
                .catch(this.handleError);
   }

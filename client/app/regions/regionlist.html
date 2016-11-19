@@ -1,2 +1,2 @@
-<input/>
+<input (keydown)="key($event)" (keypress)="query($event)"/>
 <labellist [data]="regions" (selected)="select($event)"></labellist>
