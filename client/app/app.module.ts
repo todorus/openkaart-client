@@ -4,6 +4,7 @@ import { HttpModule }                       from '@angular/http';
 
 import { AppComponent }                     from './app.component';
 import { LabelListComponent }               from './general/labellist.component';
+import { PaginationComponent }              from './general/pagination.component';
 import { RegionListComponent }              from './regions/regionlist.component';
 import { RegionService }                    from './regions/region.service';
 
@@ -13,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule ],
-  declarations: [ AppComponent, LabelListComponent, RegionListComponent ],
+  declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent ],
   providers:    [ RegionService ],
   bootstrap:    [ AppComponent ]
 })

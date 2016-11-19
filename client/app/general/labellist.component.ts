@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Pagination } from "./pagination";
 
 @Component({
   selector: 'labellist',
@@ -9,6 +10,9 @@ export class LabelListComponent implements OnInit {
 
   @Input("data")
   data :Array<any>;
+
+  @Input("pages")
+  pages :Pagination;
 
   @Output("selected")
   selected:EventEmitter<any> = new EventEmitter();

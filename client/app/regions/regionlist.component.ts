@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Region } from './region';
 import { RegionService } from './region.service';
 import {FormControl} from '@angular/forms';
+import { Pagination } from '../general/pagination';
 
 @Component({
   selector: 'region-list',
@@ -11,6 +12,7 @@ export class RegionListComponent implements OnInit {
 
   private timeoutId :any;
   private regions :Array<Region>;
+  private pages :Pagination;
 
   constructor(private regionService :RegionService) {
     this.timeoutId = null;
@@ -56,6 +58,7 @@ export class RegionListComponent implements OnInit {
                   .subscribe(
                      regionData => {
                        this.regions = regionData.data;
+                       this.pages = regionData.pages;
                      },
                      error =>  {}
                    );

@@ -3,3 +3,4 @@
     {{ entry.name }}
   </li>
 </ul>
+<pagination [pages]="pages" (page)="onPage($event)"></pagination>
