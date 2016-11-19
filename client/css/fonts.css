@@ -1,12 +1,12 @@
 @font-face {
     font-family: Roboto-light;
-    src: url('fonts/Roboto-Light.ttf');
+    src: url('../fonts/Roboto-Light.ttf');
 }
 @font-face {
     font-family: Roboto-regular;
-    src: url('fonts/Roboto-Regular.ttf');
+    src: url('../fonts/Roboto-Regular.ttf');
 }
 @font-face {
     font-family: Roboto-medium;
-    src: url('fonts/Roboto-Medium.ttf');
+    src: url('../fonts/Roboto-Medium.ttf');
 }
