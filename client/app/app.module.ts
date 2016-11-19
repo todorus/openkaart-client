@@ -1,11 +1,21 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule }                         from '@angular/core';
+import { BrowserModule }                    from '@angular/platform-browser';
+import { HttpModule }                       from '@angular/http';
 
-import { AppComponent }  from './app.component';
+import { AppComponent }                     from './app.component';
+import { LabelListComponent }               from './general/labellist.component';
+import { PaginationComponent }              from './general/pagination.component';
+import { RegionListComponent }              from './regions/regionlist.component';
+import { RegionService }                    from './regions/region.service';
+
+// import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
+  imports:      [ BrowserModule, HttpModule ],
+  declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent ],
+  providers:    [ RegionService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

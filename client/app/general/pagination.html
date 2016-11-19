@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let item of items" (click)="select(item)" [class.selected]="item.selected">
+        {{item.page}}
+    </li>
+</ul>

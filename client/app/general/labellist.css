@@ -1,0 +1,27 @@
+ul {
+    padding-left: 0;
+    margin-top: 0;
+}
+ul  li {
+    border-top: none;
+    border-bottom: solid 1px #CED1D2;
+    border-left: solid 1px #CED1D2;
+    border-right: solid 1px #CED1D2;
+    background: #FFF;
+    list-style: none;
+    width: 100%;
+    padding: 10px;
+
+    color: #000;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+ul li:nth-of-type(1) {
+    border-top: solid 1px #CED1D2;
+}
+ul li:hover, ul.regions li.focus {
+    color: #FFF;
+    border: 1px solid #35886F;
+    background: #43AA8B;
+}
