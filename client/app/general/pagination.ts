@@ -7,7 +7,9 @@ export class Pagination {
     items:PaginationItem[] = null;
 
     public static toItems(value:Pagination):PaginationItem[] {
-      console.log("Pagination.items");
+      if(value.total <= 1){
+        return [];
+      }
 
       let halfRange = Math.ceil(0.5 * Pagination.MAX_RANGE);
       var bottom:number;
