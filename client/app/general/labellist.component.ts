@@ -8,6 +8,9 @@ import { Pagination } from "./pagination";
 })
 export class LabelListComponent implements OnInit {
 
+  @Input("loading")
+  loading:boolean = false;
+
   @Input("data")
   data :Array<any>;
 
@@ -30,4 +33,5 @@ export class LabelListComponent implements OnInit {
   private select(entry:any) {
       this.selected.next(entry);
   }
+
 }

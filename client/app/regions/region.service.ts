@@ -21,7 +21,7 @@ export class RegionService {
       params.set("q", query);
     }
     if(page != null){
-      params.set("page", page);
+      params.set("page", String(page));
     }
 
     return this.http.get(this.REGIONS_URL, { search: params })

@@ -2,6 +2,9 @@ ul {
     padding-left: 0;
     margin-top: 0;
 }
+ul.loading {
+  display: none;
+}
 ul  li {
     border-top: none;
     border-bottom: solid 1px #CED1D2;
@@ -24,4 +27,17 @@ ul li:hover, ul.regions li.focus {
     color: #FFF;
     border: 1px solid #35886F;
     background: #43AA8B;
+}
+ul {
+    padding-left: 0;
+    margin-top: 0;
+}
+pagination.loading {
+  display: none;
+}
+loader {
+  display: none;
+}
+loader.loading {
+  display: inherit;
 }

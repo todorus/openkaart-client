@@ -1,6 +1,7 @@
-<ul>
+<loader [ngClass]="{'loading': loading}"></loader>
+<ul [ngClass]="{'loading': loading}">
   <li *ngFor="let entry of data" (click)="select(entry)">
     {{ entry.name }}
   </li>
 </ul>
-<pagination [pages]="pages" (page)="onPage($event)"></pagination>
+<pagination [ngClass]="{'loading': loading}" [pages]="pages" (page)="onPage($event)"></pagination>

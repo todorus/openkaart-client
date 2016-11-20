@@ -10,21 +10,23 @@ import { Pagination } from '../general/pagination';
 })
 export class RegionListComponent implements OnInit {
 
-  private _query:string = null;
-  private timeoutId :any;
-  private regions :Array<Region>;
-  private pages :Pagination;
-
-  constructor(private regionService :RegionService) {
-    this.timeoutId = null;
-    this.regions = [];
-  }
-
   private static ARROW_UP:number = 38;
   private static ARROW_DOWN:number = 40;
   private static ARROW_LEFT:number = 37;
   private static ARROW_RIGHT:number = 39;
   private static BACKSPACE:number = 8;
+
+  private regions :Array<Region>;
+  private pages :Pagination;
+  private loading:boolean = false;
+
+  private _query:string = null;
+  private timeoutId :any;
+
+  constructor(private regionService :RegionService) {
+    this.timeoutId = null;
+    this.regions = [];
+  }
 
   key(event:any){
     console.log(event);
@@ -52,15 +54,19 @@ export class RegionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.search(null);
+    this.search(null, null);
   }
 
   search(query:string, page:number) {
+    this.loading = true;
     this.regionService.index(query, page)
                   .subscribe(
                      regionData => {
-                       this.regions = regionData.data;
-                       this.pages = regionData.pages;
+                       if(query == this._query){
+                         this.loading = false;
+                         this.regions = regionData.data;
+                         this.pages = regionData.pages;
+                       }
                      },
                      error =>  {}
                    );
