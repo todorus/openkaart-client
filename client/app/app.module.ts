@@ -18,7 +18,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 const appRoutes: Routes = [
-  { path: 'regions/:id', component: RegionDetailComponent },
+  { path: 'regions/:uuid', component: RegionDetailComponent },
   { path: '', component: RegionListComponent }
 ];
 
