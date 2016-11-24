@@ -8,6 +8,7 @@ import { PaginationComponent }              from './general/pagination.component
 import { RegionListComponent }              from './regions/regionlist.component';
 import { LoaderComponent }                  from './general/loader.component';
 import { RegionService }                    from './regions/region.service';
+import { MapComponent }                    from './map/map.component';
 
 // import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -16,7 +17,7 @@ import 'rxjs/add/operator/catch';
 @NgModule({
   imports:      [ BrowserModule, HttpModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
-                  LoaderComponent ],
+                  LoaderComponent, MapComponent ],
   providers:    [ RegionService ],
   bootstrap:    [ AppComponent ]
 })
