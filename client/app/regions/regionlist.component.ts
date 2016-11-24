@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Region } from './region';
 import { RegionService } from './region.service';
+import { MapService } from '../map/map.service';
 import {FormControl} from '@angular/forms';
 import { Pagination } from '../general/pagination';
 
@@ -23,7 +24,7 @@ export class RegionListComponent implements OnInit {
   private _query:string = null;
   private timeoutId :any;
 
-  constructor(private regionService :RegionService) {
+  constructor(private regionService :RegionService, private mapService:MapService) {
     this.timeoutId = null;
     this.regions = [];
   }
@@ -78,5 +79,6 @@ export class RegionListComponent implements OnInit {
 
   select(region:Region){
       console.log("selected", region);
+      this.mapService.show(region);
   }
 }

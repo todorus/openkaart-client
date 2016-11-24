@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from './map.service';
+import { Region } from '../regions/region';
 import Polygon = L.Polygon;
 
 @Component({
@@ -15,8 +17,10 @@ export class MapComponent {
     layer;
     map;
 
-    constructor() {
+    constructor(private mapService:MapService) {
         console.log("construct");
+        mapService.selection$.subscribe(selection => this.showRegions(selection));
+        mapService.focus$.subscribe(region => this.hover(region));
     }
 
     ngOnInit(){
@@ -38,6 +42,109 @@ export class MapComponent {
             L.latLng(50.509497, 7.404785)
         );
         this.map.fitBounds(netherlandsBounds, this.BOUNDS_OPTIONS);
+    }
+
+    private showRegions(regions:Region[]){
+        if(this.layer != null){
+            this.map.removeLayer(this.layer);
+        }
+
+        if(regions == null || regions.length == 0){
+            console.warn("No regions to show", regions);
+            this.defaultZoom();
+            return;
+        }
+
+        var polygons = {
+            type: "FeatureCollection",
+            features: []
+        };
+
+        for (var i = 0; i < regions.length; i++) {
+            var region = regions[i];
+            var geometry = region.geometry;
+            geometry["mapService"] = this.mapService;
+            geometry["region"] = region;
+            geometry["properties"] = {
+              "uuid": region.uuid,
+              "name": region.name,
+              "type": region.type
+            };
+
+            if (geometry != undefined && geometry != null) {
+                polygons["features"].push(geometry);
+            }
+        }
+
+        if(polygons["features"].length == 0){
+            console.warn("Regions have no area", regions);
+            this.defaultZoom();
+            return;
+        }
+
+        this.layer = L.geoJSON(polygons);
+        if(this.layer != null) {
+            this.layer.setStyle(
+                {
+                    color: '#35886F',
+                    fillColor: '#43AA8B'
+                }
+            );
+            this.layer.on(
+                {
+                    mouseover: this.onMouseOver,
+                    mouseout: this.onMouseOut,
+                    click: this.onClick
+                }
+            )
+            this.map.addLayer(this.layer);
+            this.map.fitBounds(this.layer.getBounds(), this.BOUNDS_OPTIONS);
+        }
+    }
+
+    private hover(region:Region):void {
+
+        this.layer.eachLayer(function(layer){
+            if(region == null || layer.feature.properties["uuid"] != region.uuid){
+                layer.setStyle(
+                    {
+                        color: '#35886F',
+                        fillColor: '#43AA8B'
+                    }
+                )
+            } else {
+                layer.setStyle(
+                    {
+                        color: '#255F4E',
+                        fillColor: '#2D755F'
+                    }
+                )
+            }
+        });
+    }
+
+    private onMouseOver(e){
+        var feature =  e.layer.feature;
+        var region = feature.region;
+        var mapService = feature.mapService;
+        mapService.focus(region);
+    }
+
+    private onMouseOut(e){
+        var feature =  e.layer.feature;
+        var region = feature.region;
+        var mapService = feature.mapService;
+        mapService.focus(null);
+    }
+
+    private onClick(e){
+        var feature =  e.layer.feature;
+        var region = feature.region;
+        var mapService = feature.mapService;
+
+        if(mapService.editMode){
+            mapService.deselect(region);
+        }
     }
 
 }
