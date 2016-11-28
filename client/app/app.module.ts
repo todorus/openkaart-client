@@ -19,6 +19,7 @@ import 'rxjs/add/operator/catch';
 
 const appRoutes: Routes = [
   { path: 'regions/:uuid', component: RegionDetailComponent },
+  { path: 'regions', component: RegionListComponent },
   { path: '', component: RegionListComponent }
 ];
 
