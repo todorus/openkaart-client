@@ -10,7 +10,7 @@ import { Region } from './region';
 @Injectable()
 export class RegionService {
 
-  REGIONS_URL :string = "http://staging.waarregelikzorg.nl/regions";
+  REGIONS_URL :string = "https://staging.waarregelikzorg.nl/regions";
 
   constructor(private http: Http) { }
 
