@@ -6,13 +6,17 @@ import { Observable }     from 'rxjs/Observable';
 import { Pagination } from '../general/pagination';
 import { RegionResponse } from './regionresponse';
 import { Region } from './region';
+import { Config } from '../config';
 
 @Injectable()
 export class RegionService {
 
-  REGIONS_URL :string = "https://staging.waarregelikzorg.nl/regions";
+  REGIONS_URL :string; //= "https://staging.waarregelikzorg.nl/regions";
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, config: Config) {
+    this.REGIONS_URL = config.get("base_url") + "/regions"
+    console.log("regions_url", this.REGIONS_URL);
+  }
 
   index(query:string, page:number):Observable<RegionResponse> {
     console.log("RegionService.index()");

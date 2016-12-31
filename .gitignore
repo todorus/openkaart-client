@@ -1,6 +1,7 @@
 client/typings
 client/app/**/*.js
 client/app/**/*.map
+client/app/config.ts
 client/node_modules
 client/jspm_packages
 client/bower_components

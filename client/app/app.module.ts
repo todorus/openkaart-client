@@ -5,6 +5,7 @@ import { RouterModule, Routes }             from '@angular/router';
 import { ReactiveFormsModule }              from '@angular/forms';
 
 import { AppComponent }                     from './app.component';
+import { Config }                           from './config';
 import { LabelListComponent }               from './general/labellist.component';
 import { PaginationComponent }              from './general/pagination.component';
 import { RegionListComponent }              from './regions/regionlist.component';
@@ -33,7 +34,7 @@ const appRoutes: Routes = [
   imports:      [ BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), ReactiveFormsModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
                   LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent],
-  providers:    [ RegionService, MapService, UserService ],
+  providers:    [ Config, RegionService, MapService, UserService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { User } from './user';
+import { Config } from '../config';
 
 
 @Injectable()
 export class UserService {
 
-  USERS_URL :string = "https://staging.waarregelikzorg.nl/users";
+  USERS_URL :string;// = "https://staging.waarregelikzorg.nl/users";
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, config: Config) {
+    this.USERS_URL = config.get("base_url") + "/users"
+  }
 
   public login(username:string, password:string):Observable<User> {
     console.log("Userservice.login()");
