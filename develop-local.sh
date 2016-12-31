@@ -2,10 +2,10 @@
 LOCAL_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # get the config File
-cp $LOCAL_DIR/docker/staging/config.ts $LOCAL_DIR/client/app/config.ts  
+cp $LOCAL_DIR/docker/local/config.ts $LOCAL_DIR/client/app/config.ts 
 
 # make sure we use the latest build
-docker-compose -f $LOCAL_DIR/docker/staging/develop.yaml build
+docker-compose -f $LOCAL_DIR/docker/local/develop.yaml build
 
 # run the development container
-docker-compose -f $LOCAL_DIR/docker/staging/develop.yaml up
+docker-compose -f $LOCAL_DIR/docker/local/develop.yaml up
