@@ -19,6 +19,7 @@ import { UserService }                        from './users/user.service';
 import { LoginComponent }                    from './users/login.component';
 
 // import 'rxjs/Rx';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 

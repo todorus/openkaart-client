@@ -18,6 +18,10 @@ export class UserService {
     console.log("Userservice.login()");
 
     return this.http.post(this.USERS_URL+"/login", { username: username, password: password })
+               .do(response => {
+                 var jwt = response.headers.get("JWT");
+                 localStorage.setItem("jwt", jwt);
+               })
                .map(response => <User> response.json())
                .catch(this.handleError);
   }
