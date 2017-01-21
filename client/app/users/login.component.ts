@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl('')
     });
   }
-
+  
   public submit(user:any):void {
     console.log("login", user);
 

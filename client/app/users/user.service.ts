@@ -3,6 +3,7 @@ import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { User } from './user';
 import { Config } from '../config';
+import { AuthHttp } from '../auth/authhttp';
 
 
 @Injectable()
@@ -10,17 +11,17 @@ export class UserService {
 
   USERS_URL :string;// = "https://staging.waarregelikzorg.nl/users";
 
-  constructor(private http: Http, config: Config) {
+  constructor(private authhttp: AuthHttp, config: Config) {
     this.USERS_URL = config.get("base_url") + "/users"
   }
 
   public login(username:string, password:string):Observable<User> {
     console.log("Userservice.login()");
 
-    return this.http.post(this.USERS_URL+"/login", { username: username, password: password })
+    return this.authhttp.post(this.USERS_URL+"/login", { username: username, password: password })
                .do(response => {
                  var jwt = response.headers.get("JWT");
-                 localStorage.setItem("jwt", jwt);
+                 this.authhttp.setToken(jwt);
                })
                .map(response => <User> response.json())
                .catch(this.handleError);

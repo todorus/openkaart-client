@@ -6,17 +6,19 @@ import { ReactiveFormsModule }              from '@angular/forms';
 
 import { AppComponent }                     from './app.component';
 import { Config }                           from './config';
+import { AuthHttp }                         from './auth/authhttp';
 import { LabelListComponent }               from './general/labellist.component';
 import { PaginationComponent }              from './general/pagination.component';
 import { RegionListComponent }              from './regions/regionlist.component';
-import { RegionDetailComponent }              from './regions/regiondetail.component';
+import { RegionDetailComponent }            from './regions/regiondetail.component';
 import { LoaderComponent }                  from './general/loader.component';
 import { RegionService }                    from './regions/region.service';
-import { MapComponent }                    from './map/map.component';
-import { MapService }                    from './map/map.service';
+import { MapComponent }                     from './map/map.component';
+import { MapService }                       from './map/map.service';
 
-import { UserService }                        from './users/user.service';
-import { LoginComponent }                    from './users/login.component';
+import { UserService }                      from './users/user.service';
+import { LoginComponent }                   from './users/login.component';
+import { SessionComponent }                 from './users/session.component';
 
 // import 'rxjs/Rx';
 import 'rxjs/add/operator/do';
@@ -34,8 +36,9 @@ const appRoutes: Routes = [
 @NgModule({
   imports:      [ BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), ReactiveFormsModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
-                  LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent],
-  providers:    [ Config, RegionService, MapService, UserService ],
+                  LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent,
+                  SessionComponent],
+  providers:    [ Config, AuthHttp, RegionService, MapService, UserService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
