@@ -4,13 +4,17 @@ import { UserService } from './user.service';
 
 @Component({
   selector: 'login',
-  templateUrl: 'app/users/login.html'
+  templateUrl: 'app/users/login.html',
+  styleUrls: ['app/users/login.css']
 })
 export class LoginComponent implements OnInit {
 
   private user : FormGroup;
+  private loading :boolean;
 
-  constructor(private userService:UserService){}
+  constructor(private userService:UserService){
+    this.loading = false;
+  }
 
   ngOnInit() {
     this.user = new FormGroup({
@@ -20,12 +24,16 @@ export class LoginComponent implements OnInit {
   }
 
   public submit(user:any):void {
+    this.loading = true;
     this.userService.login(user.username, user.password)
                   .subscribe(
                      user => {
-                       console.log("response", user);
+                       this.loading = false;
                      },
-                     error =>  {}
+                     error =>  {
+                       this.loading = false;
+                       //TODO show error
+                     }
                    );
   }
 

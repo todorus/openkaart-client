@@ -46,6 +46,13 @@ label {
 /*
     FORMS
 */
+loader {
+  display: none;
+}
+loader.loading {
+  display: inherit;
+}
+
 input, textarea {
     width: 100%;
     padding: 10px;

@@ -69,7 +69,10 @@ export class RegionListComponent implements OnInit {
                          this.pages = regionData.pages;
                        }
                      },
-                     error =>  {}
+                     error =>  {
+                       this.loading = false;
+                       //TODO show error
+                     }
                    );
   }
 

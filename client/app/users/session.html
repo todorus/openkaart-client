@@ -1,7 +1,8 @@
 <div *ngIf="!hasSession" class="container">
-  Not logged in
+  Not logged in<br />
+  <a [routerLink]="['/users/login']">login</a>
 </div>
 <div *ngIf="hasSession" class="container">
   Logged in as {{user?.username}}<br />
-  <u (click)="logout()">Log out</u>
+  <a (click)="logout()">Log out</a>
 </div>
