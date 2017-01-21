@@ -45,6 +45,11 @@ export class UserService {
                .catch(this.handleError);
   }
 
+  public logout():void {
+    this.authhttp.setToken(null);
+    this.retrieveSession();
+  }
+
   private setUser(user:User):void {
     this.userStore = user;
     this.userSubject.next(this.userStore);

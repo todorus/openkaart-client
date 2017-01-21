@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response, URLSearchParams } from '@angular/http';
+import { Headers, Response, URLSearchParams } from '@angular/http';
 
 import { Observable }     from 'rxjs/Observable';
 
@@ -7,13 +7,14 @@ import { Pagination } from '../general/pagination';
 import { RegionResponse } from './regionresponse';
 import { Region } from './region';
 import { Config } from '../config';
+import { AuthHttp } from '../auth/authhttp';
 
 @Injectable()
 export class RegionService {
 
   REGIONS_URL :string; //= "https://staging.waarregelikzorg.nl/regions";
 
-  constructor(private http: Http, config: Config) {
+  constructor(private http: AuthHttp, config: Config) {
     this.REGIONS_URL = config.get("base_url") + "/regions"
   }
 

@@ -2,5 +2,6 @@
   Not logged in
 </div>
 <div *ngIf="hasSession" class="container">
-  Logged in as {{user?.username}}
+  Logged in as {{user?.username}}<br />
+  <u (click)="logout()">Log out</u>
 </div>

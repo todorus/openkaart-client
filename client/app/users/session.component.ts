@@ -17,8 +17,12 @@ export class SessionComponent implements OnInit {
     this.hasSession = false;
   }
 
-  private ngOnInit():void {
+  public ngOnInit():void {
     this.userService.retrieveSession();
+  }
+
+  private logout():void {
+    this.userService.logout();
   }
 
   private setUser(user:User):void {
