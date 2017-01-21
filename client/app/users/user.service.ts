@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { Subject } from "rxjs/Subject";
 import { User } from './user';
 import { Config } from '../config';
 import { AuthHttp } from '../auth/authhttp';
@@ -11,8 +12,25 @@ export class UserService {
 
   USERS_URL :string;// = "https://staging.waarregelikzorg.nl/users";
 
+  private userStore: User;
+  private userSubject: Subject<User> = new Subject<User>()
+  user$ = this.userSubject.asObservable();
+
   constructor(private authhttp: AuthHttp, config: Config) {
-    this.USERS_URL = config.get("base_url") + "/users"
+    this.USERS_URL = config.get("base_url") + "/users";
+    this.retrieveSession();
+  }
+
+  public retrieveSession():void {
+    let sessionData:any = this.authhttp.getSession();
+    if(sessionData == null){
+      this.setUser(null);
+      return;
+    }
+
+    let user:User = new User();
+    user.username = sessionData["username"];
+    this.setUser(user);
   }
 
   public login(username:string, password:string):Observable<User> {
@@ -22,9 +40,16 @@ export class UserService {
                .do(response => {
                  var jwt = response.headers.get("JWT");
                  this.authhttp.setToken(jwt);
+                 this.retrieveSession();
                })
                .map(response => <User> response.json())
                .catch(this.handleError);
+  }
+
+  private setUser(user:User):void {
+    console.log("UserService.setUser()", user);
+    this.userStore = user;
+    this.userSubject.next(this.userStore);
   }
 
   private handleError(error:Response) {

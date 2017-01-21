@@ -1,0 +1,6 @@
+<div *ngIf="!hasSession" class="container">
+  Not logged in
+</div>
+<div *ngIf="hasSession" class="container">
+  Logged in as {{user?.username}}
+</div>
