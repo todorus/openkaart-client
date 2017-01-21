@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from './user.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   private user : FormGroup;
   private loading :boolean;
 
-  constructor(private userService:UserService, private router:Router){
+  constructor(private userService:UserService, private router:Router,
+    private flashMessageService: FlashMessagesService){
     this.loading = false;
   }
 
@@ -35,8 +37,9 @@ export class LoginComponent implements OnInit {
                      },
                      error =>  {
                        this.loading = false;
-                       //TODO show error
-                       console.log("error");
+                       //TODO differentiate between error and wrong username/password
+                       let flashOptions = {cssClass: 'flash-fail', timeout: 5000};
+                       this.flashMessageService.show("Incorrect username/password", flashOptions);
                      }
                    );
   }

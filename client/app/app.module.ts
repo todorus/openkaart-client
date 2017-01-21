@@ -3,6 +3,7 @@ import { BrowserModule }                    from '@angular/platform-browser';
 import { HttpModule }                       from '@angular/http';
 import { RouterModule, Routes }             from '@angular/router';
 import { ReactiveFormsModule }              from '@angular/forms';
+import { FlashMessagesModule }              from 'angular2-flash-messages';
 
 import { AppComponent }                     from './app.component';
 import { Config }                           from './config';
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), ReactiveFormsModule ],
+  imports:      [ BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), ReactiveFormsModule,
+                  FlashMessagesModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
                   LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent,
                   SessionComponent],

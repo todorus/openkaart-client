@@ -52,6 +52,19 @@ loader {
 loader.loading {
   display: inherit;
 }
+.flash-fail {
+  width: 100%;
+  padding: 10px;
+
+  border: none;
+  background: #AA4356;
+
+  color: #FFF;
+  font-family: Roboto-medium;
+  font-size: 14px;
+  text-align: center;
+}
+
 
 input, textarea {
     width: 100%;
