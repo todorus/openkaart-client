@@ -22,7 +22,6 @@ export class SessionComponent implements OnInit {
   }
 
   private setUser(user:User):void {
-    console.log("session user",user);
     this.hasSession = user != null;
     this.user = user;
   }

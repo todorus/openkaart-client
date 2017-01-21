@@ -18,10 +18,8 @@ export class LoginComponent implements OnInit {
       password: new FormControl('')
     });
   }
-  
-  public submit(user:any):void {
-    console.log("login", user);
 
+  public submit(user:any):void {
     this.userService.login(user.username, user.password)
                   .subscribe(
                      user => {

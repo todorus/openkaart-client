@@ -34,7 +34,6 @@ export class UserService {
   }
 
   public login(username:string, password:string):Observable<User> {
-    console.log("Userservice.login()");
 
     return this.authhttp.post(this.USERS_URL+"/login", { username: username, password: password })
                .do(response => {
@@ -47,7 +46,6 @@ export class UserService {
   }
 
   private setUser(user:User):void {
-    console.log("UserService.setUser()", user);
     this.userStore = user;
     this.userSubject.next(this.userStore);
   }

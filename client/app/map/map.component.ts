@@ -18,7 +18,6 @@ export class MapComponent {
     map;
 
     constructor(private mapService:MapService) {
-        console.log("construct");
         mapService.selection$.subscribe(selection => this.showRegions(selection));
         mapService.focus$.subscribe(region => this.hover(region));
     }

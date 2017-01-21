@@ -15,11 +15,9 @@ export class RegionService {
 
   constructor(private http: Http, config: Config) {
     this.REGIONS_URL = config.get("base_url") + "/regions"
-    console.log("regions_url", this.REGIONS_URL);
   }
 
   index(query:string, page:number):Observable<RegionResponse> {
-    console.log("RegionService.index()");
     var params = new URLSearchParams();
     if(query != null){
       params.set("q", query);
@@ -34,8 +32,6 @@ export class RegionService {
   }
 
   show(uuid:string):Observable<Region> {
-    //stub
-    console.log("RegionService.show()");
     let url:string = this.REGIONS_URL+"/"+uuid;
     return this.http.get(url)
                .map(response => <Region> response.json())
