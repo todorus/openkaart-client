@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from './user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   private user : FormGroup;
   private loading :boolean;
 
-  constructor(private userService:UserService){
+  constructor(private userService:UserService, private router:Router){
     this.loading = false;
   }
 
@@ -29,10 +30,13 @@ export class LoginComponent implements OnInit {
                   .subscribe(
                      user => {
                        this.loading = false;
+                       console.log("success");
+                       this.router.navigate(['/']);
                      },
                      error =>  {
                        this.loading = false;
                        //TODO show error
+                       console.log("error");
                      }
                    );
   }
