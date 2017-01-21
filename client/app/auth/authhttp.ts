@@ -15,7 +15,7 @@ export class AuthHttp {
   }
 
   public get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    this.mergeToken(options);
+    options = this.mergeToken(options);
     return this.http.get(url, options);
   }
 
@@ -25,27 +25,27 @@ export class AuthHttp {
   }
 
   public put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    this.mergeToken(options);
+    options = this.mergeToken(options);
     return this.http.put(url, body, options);
   }
 
   public delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    this.mergeToken(options);
+    options = this.mergeToken(options);
     return this.http.delete(url, options);
   }
 
   public patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    this.mergeToken(options);
+    options = this.mergeToken(options);
     return this.http.patch(url, body, options);
   }
 
   public head(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    this.mergeToken(options);
+    options = this.mergeToken(options);
     return this.http.head(url, options);
   }
 
   public options(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    this.mergeToken(options);
+    options = this.mergeToken(options);
     return this.http.options(url, options);
   }
 
@@ -73,7 +73,11 @@ export class AuthHttp {
   }
 
   public setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_STORAGE, token);
+    if(token != null){
+      localStorage.setItem(this.TOKEN_STORAGE, token);
+    } else {
+      localStorage.removeItem(this.TOKEN_STORAGE);
+    }
   }
 
   public hasSession(): boolean {
