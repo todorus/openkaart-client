@@ -35,9 +35,3 @@ ul {
 pagination.loading {
   display: none;
 }
-loader {
-  display: none;
-}
-loader.loading {
-  display: inherit;
-}

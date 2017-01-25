@@ -37,10 +37,36 @@ label {
 .hide {
     display: none;
 }
+.container {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 1px 1px 1px #999;
+  overflow: auto;
+}
 
 /*
     FORMS
 */
+loader {
+  display: none;
+}
+loader.loading {
+  display: inherit;
+}
+.flash-fail {
+  width: 100%;
+  padding: 10px;
+
+  border: none;
+  background: #AA4356;
+
+  color: #FFF;
+  font-family: Roboto-medium;
+  font-size: 14px;
+  text-align: center;
+}
+
+
 input, textarea {
     width: 100%;
     padding: 10px;
