@@ -8,6 +8,7 @@ import { FlashMessagesModule }              from 'angular2-flash-messages';
 import { AppComponent }                     from './app.component';
 import { Config }                           from './config';
 import { AuthHttp }                         from './auth/authhttp';
+import { WelcomeComponent }                 from './about/welcome.component';
 import { LabelListComponent }               from './general/labellist.component';
 import { PaginationComponent }              from './general/pagination.component';
 import { RegionListComponent }              from './regions/regionlist.component';
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
   { path: 'users/login', component: LoginComponent },
   { path: 'regions/:uuid', component: RegionDetailComponent },
   { path: 'regions', component: RegionListComponent},
-  { path: '', component: RegionListComponent }
+  { path: '', component: WelcomeComponent }
 ];
 
 
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
                   FlashMessagesModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
                   LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent,
-                  SessionComponent],
+                  SessionComponent, WelcomeComponent],
   providers:    [ Config, AuthHttp, RegionService, MapService, UserService ],
   bootstrap:    [ AppComponent ]
 })
