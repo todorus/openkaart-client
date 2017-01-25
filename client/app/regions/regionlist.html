@@ -1,2 +1,6 @@
-<input (keydown)="key($event)" (keypress)="query($event)"/>
-<labellist [loading]="loading" [data]="regions" [pages]="pages" (selected)="select($event)" (page)="onPage($event)"></labellist>
+<div class="left">
+    <div class="small list container">
+        <input (keydown)="key($event)" (keypress)="query($event)" />
+        <labellist [loading]="loading" [data]="regions" [pages]="pages" (selected)="select($event)" (page)="onPage($event)"></labellist>
+    </div>
+</div>

@@ -1,7 +1,12 @@
-<h1>Login</h1>
-<form [ngClass]="{'loading': loading}" [formGroup]="user" (ngSubmit)="submit(user.value)">
-  <input formControlName="username" placeholder="username"/>
-  <input formControlName="password" placeholder="password" type="password"/>
-  <input value="Login" type="submit" />
-</form>
-<loader [ngClass]="{'loading': loading}"></loader>
+<div class="center">
+    <div class="small container">
+        <h1>Login</h1>
+        <form [ngClass]="{'loading': loading}" [formGroup]="user" (ngSubmit)="submit(user.value)">
+            <input formControlName="username" placeholder="username" />
+            <input formControlName="password" placeholder="password" type="password" />
+            <input value="Login" type="submit" />
+        </form>
+        <flash-messages></flash-messages>
+        <loader [ngClass]="{'loading': loading}"></loader>
+    </div>
+</div>
