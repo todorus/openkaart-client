@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
                   .subscribe(
                      user => {
                        this.loading = false;
-                       this.router.navigate(['/']);
+                       this.router.navigate(['/dashboard']);
                      },
                      error =>  {
                        this.loading = false;

@@ -17,6 +17,7 @@ import { LoaderComponent }                  from './general/loader.component';
 import { RegionService }                    from './regions/region.service';
 import { MapComponent }                     from './map/map.component';
 import { MapService }                       from './map/map.service';
+import { DashboardComponent }               from './admin/dashboard.component';
 
 import { UserService }                      from './users/user.service';
 import { LoginComponent }                   from './users/login.component';
@@ -36,7 +37,7 @@ import 'rxjs/add/observable/throw';
                   FlashMessagesModule, AppRoutingModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
                   LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent,
-                  SessionComponent, WelcomeComponent],
+                  SessionComponent, WelcomeComponent, DashboardComponent],
   providers:    [ Config, AuthHttp, RegionService, MapService, UserService ],
   bootstrap:    [ AppComponent ]
 })

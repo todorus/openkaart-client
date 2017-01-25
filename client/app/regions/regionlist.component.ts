@@ -6,7 +6,7 @@ import {FormControl} from '@angular/forms';
 import { Pagination } from '../general/pagination';
 
 @Component({
-  selector: 'region-list',
+  selector: 'regionlist',
   templateUrl: 'app/regions/regionlist.html'
 })
 export class RegionListComponent implements OnInit {

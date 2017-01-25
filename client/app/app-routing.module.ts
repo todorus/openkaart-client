@@ -5,11 +5,13 @@ import { WelcomeComponent }                 from './about/welcome.component';
 import { RegionListComponent }              from './regions/regionlist.component';
 import { RegionDetailComponent }            from './regions/regiondetail.component';
 import { LoginComponent }                   from './users/login.component';
+import { DashboardComponent }               from './admin/dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'users/login', component: LoginComponent },
   { path: 'regions/:uuid', component: RegionDetailComponent },
   { path: 'regions', component: RegionListComponent},
+  { path: 'dashboard', component: DashboardComponent},
   { path: '', component: WelcomeComponent }
 ];
 
