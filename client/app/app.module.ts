@@ -22,23 +22,18 @@ import { UserService }                      from './users/user.service';
 import { LoginComponent }                   from './users/login.component';
 import { SessionComponent }                 from './users/session.component';
 
+import { AppRoutingModule }                 from './app-routing.module';
+
 // import 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-const appRoutes: Routes = [
-  { path: 'users/login', component: LoginComponent },
-  { path: 'regions/:uuid', component: RegionDetailComponent },
-  { path: 'regions', component: RegionListComponent},
-  { path: '', component: WelcomeComponent }
-];
-
-
+//TODO implement a route gaurd for admin functions
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, RouterModule.forRoot(appRoutes), ReactiveFormsModule,
-                  FlashMessagesModule ],
+  imports:      [ BrowserModule, HttpModule, ReactiveFormsModule,
+                  FlashMessagesModule, AppRoutingModule ],
   declarations: [ AppComponent, LabelListComponent, RegionListComponent, PaginationComponent,
                   LoaderComponent, MapComponent, RegionDetailComponent , LoginComponent,
                   SessionComponent, WelcomeComponent],
