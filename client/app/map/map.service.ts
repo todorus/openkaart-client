@@ -14,7 +14,6 @@ export class MapService {
     focus$ = this.focusSubject.asObservable();
 
     show(region: Region): void {
-        console.log("show");
         this.selectionStore = [region];
         this.selectionSubject.next(this.selectionStore);
     }

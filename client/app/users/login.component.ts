@@ -32,14 +32,19 @@ export class LoginComponent implements OnInit {
                   .subscribe(
                      user => {
                        this.loading = false;
-                       console.log("success");
                        this.router.navigate(['/']);
                      },
                      error =>  {
                        this.loading = false;
-                       //TODO differentiate between error and wrong username/password
+
                        let flashOptions = {cssClass: 'flash-fail', timeout: 5000};
-                       this.flashMessageService.show("Incorrect username/password", flashOptions);
+                       var message:string;
+                       if(error.status == 401) {
+                         message = "Incorrect username/password";
+                       } else {
+                         message = "An error occurred while logging in";
+                       }
+                       this.flashMessageService.show(message, flashOptions);
                      }
                    );
   }
